@@ -72,13 +72,36 @@
 </head>
 <body>
 
+<!-- Main Content Container -->
 <div class="container">
     <h1>Study Guide Tool</h1>
+
+    <!-- Essay Writing Note Section -->
+    <div id="essayNote" class="essay-note">
+        <h2>How to Write Essay Answers</h2>
+        <p>
+            When writing your essay answers, follow this structure:
+        </p>
+        <ul>
+            <li><strong>Introduction:</strong> Briefly explain the topic and key points you'll cover.</li>
+            <li><strong>Key Arguments/Concepts:</strong> 
+                Discuss each main point in detail, providing examples or relevant cases where applicable.
+            </li>
+            <li><strong>Conclusion:</strong> Summarize your main points and their significance.
+            </li>
+        </ul>
+        <p>
+            Be sure to use complete sentences, proper grammar, and cite the textbook or real examples.
+        </p>
+    </div>
+
+    <!-- Questions Section -->
     <div id="questions"></div>
     <button onclick="generateQuestions()">Generate Questions</button>
     <button id="submitButton" onclick="submitAnswers()" style="display:none;">Submit Answers</button>
 </div>
 
+<!-- Reference Panel Section -->
 <div class="reference-panel">
     <h2>Study Guide Reference</h2>
     <div class="study-guide" id="studyGuideText"></div>
