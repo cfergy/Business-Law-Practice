@@ -50,12 +50,16 @@
             margin-top: 10px;
             font-weight: bold;
         }
-        .correct {
-            color: green;
-        }
-        .incorrect {
-            color: red;
-        }
+.correct {
+    color: green;
+    font-weight: bold;
+}
+
+.incorrect {
+    color: red;
+    font-weight: bold;
+}
+
         .study-guide {
             white-space: pre-wrap;
             overflow-y: auto;
@@ -226,11 +230,10 @@ const questions = [
         type: "multiple-choice",
         question: "What is Stare Decisis?",
         options: [
-            "The doctrine that courts should follow precedents",
-            "A court decision used for future guidance",
-            "The requirement for due process"
-        ],
-        answer: "The doctrine that courts should follow precedents"
+            "The doctrine that courts should follow precedents\tTrue",
+            "A court decision used for future guidance\tFalse",
+            "The requirement for due process\tFalse"
+        ]
     },
     // Due Process Clauses
     {
@@ -241,11 +244,10 @@ const questions = [
         type: "multiple-choice",
         question: "Where are Due Process clauses found in the Constitution?",
         options: [
-            "5th and 14th Amendments",
-            "4th and 10th Amendments",
-            "1st and 6th Amendments"
-        ],
-        answer: "5th and 14th Amendments"
+            "5th and 14th Amendments\tTrue",
+            "4th and 10th Amendments\tFalse",
+            "1st and 6th Amendments\tFalse"
+        ]
     },
     // Alternative Dispute Resolution Methods
     {
@@ -256,11 +258,10 @@ const questions = [
         type: "multiple-choice",
         question: "Which of the following is NOT an alternative dispute resolution method?",
         options: [
-            "Litigation",
-            "Negotiation",
-            "Mediation"
-        ],
-        answer: "Litigation"
+            "Litigation\tTrue",
+            "Negotiation\tFalse",
+            "Mediation\tFalse"
+        ]
     },
     // Tort and Damages
     {
@@ -271,11 +272,10 @@ const questions = [
         type: "multiple-choice",
         question: "Which of the following is an example of Punitive Damages?",
         options: [
-            "Compensation for medical bills",
-            "A fine to punish egregious conduct",
-            "Reimbursement for lost wages"
-        ],
-        answer: "A fine to punish egregious conduct"
+            "Compensation for medical bills\tFalse",
+            "A fine to punish egregious conduct\tTrue",
+            "Reimbursement for lost wages\tFalse"
+        ]
     },
     // Contracts and Requirements
     {
@@ -286,11 +286,10 @@ const questions = [
         type: "multiple-choice",
         question: "Which of these is NOT a requirement for a valid contract?",
         options: [
-            "Offer",
-            "Consideration",
-            "Reimbursement"
-        ],
-        answer: "Reimbursement"
+            "Offer\tFalse",
+            "Consideration\tFalse",
+            "Reimbursement\tTrue"
+        ]
     },
     // Voluntary Consent, Undue Influence, and Duress
     {
@@ -301,11 +300,10 @@ const questions = [
         type: "multiple-choice",
         question: "Which of the following describes Undue Influence?",
         options: [
-            "Exploitation of a relationship to gain an unfair advantage",
-            "Threats or coercion to force agreement",
-            "Misrepresentation of terms in a contract"
-        ],
-        answer: "Exploitation of a relationship to gain an unfair advantage"
+            "Exploitation of a relationship to gain an unfair advantage\tTrue",
+            "Threats or coercion to force agreement\tFalse",
+            "Misrepresentation of terms in a contract\tFalse"
+        ]
     },
     // Agent and Principal Duties
     {
@@ -316,11 +314,10 @@ const questions = [
         type: "multiple-choice",
         question: "Which of the following is a duty of an Agent?",
         options: [
-            "Acting in the best interest of the Principal",
-            "Providing compensation to the Principal",
-            "Avoiding interference in the Principal's work"
-        ],
-        answer: "Acting in the best interest of the Principal"
+            "Acting in the best interest of the Principal\tTrue",
+            "Providing compensation to the Principal\tFalse",
+            "Avoiding interference in the Principal's work\tFalse"
+        ]
     },
     // Employment-at-Will Doctrine
     {
@@ -331,11 +328,10 @@ const questions = [
         type: "multiple-choice",
         question: "Which of the following is NOT an exception to Employment-at-Will?",
         options: [
-            "Public policy violations",
-            "Implied contracts",
-            "Personal disagreements"
-        ],
-        answer: "Personal disagreements"
+            "Public policy violations\tFalse",
+            "Implied contracts\tFalse",
+            "Personal disagreements\tTrue"
+        ]
     },
     // Sexual Harassment
     {
@@ -346,11 +342,10 @@ const questions = [
         type: "multiple-choice",
         question: "Which of the following describes Quid Pro Quo harassment?",
         options: [
-            "Sexual favors tied to workplace benefits",
-            "Offensive jokes creating a hostile work environment",
-            "Unwanted physical contact"
-        ],
-        answer: "Sexual favors tied to workplace benefits"
+            "Sexual favors tied to workplace benefits\tTrue",
+            "Offensive jokes creating a hostile work environment\tFalse",
+            "Unwanted physical contact\tFalse"
+        ]
     },
     // Sole Proprietorships
     {
@@ -361,11 +356,10 @@ const questions = [
         type: "multiple-choice",
         question: "Which of the following is NOT an advantage of a Sole Proprietorship?",
         options: [
-            "Full control",
-            "Limited personal liability",
-            "Ease of setup"
-        ],
-        answer: "Limited personal liability"
+            "Full control\tFalse",
+            "Limited personal liability\tTrue",
+            "Ease of setup\tFalse"
+        ]
     },
     // Limited Liability Corporations
     {
@@ -376,51 +370,41 @@ const questions = [
         type: "multiple-choice",
         question: "Which of the following is an advantage of an LLC?",
         options: [
-            "Limited liability for owners",
-            "Unlimited growth potential",
-            "No startup costs"
-        ],
-        answer: "Limited liability for owners"
+            "Limited liability for owners\tTrue",
+            "Unlimited growth potential\tFalse",
+            "No startup costs\tFalse"
+        ]
     }
 ];
 
+
 function generateQuestions() {
-    const selectedQuestions = [];
-    const essayQuestions = questions.filter(q => q.type === "essay");
-    const multipleChoiceQuestions = questions.filter(q => q.type === "multiple-choice");
-
-    // Randomly select questions
-    while (selectedQuestions.length < 4) {
-        const randomQuestion = essayQuestions[Math.floor(Math.random() * essayQuestions.length)];
-        if (!selectedQuestions.includes(randomQuestion)) selectedQuestions.push(randomQuestion);
-    }
-    while (selectedQuestions.length < 6) {
-        const randomQuestion = multipleChoiceQuestions[Math.floor(Math.random() * multipleChoiceQuestions.length)];
-        if (!selectedQuestions.includes(randomQuestion)) selectedQuestions.push(randomQuestion);
-    }
-
-    // Display questions
     const questionContainer = document.getElementById("questions");
     questionContainer.innerHTML = "";  // Clear previous questions
 
-    selectedQuestions.forEach(q => {
+    questions.forEach((q, index) => {
         const questionDiv = document.createElement("div");
         questionDiv.className = `question ${q.type}`;
+        questionDiv.setAttribute("data-id", index); // Attach question index
 
-        if (q.type === "essay") {
-            questionDiv.innerHTML = `
-                <strong>Essay Question:</strong> ${q.question}
-                <textarea></textarea>
-            `;
-        } else if (q.type === "multiple-choice") {
-            const optionsHTML = q.options.map(option => 
-                `<label>
-                    <input type="radio" name="q${questions.indexOf(q)}" value="${option}"> ${option}
-                </label><br>`
-            ).join("");
+        if (q.type === "multiple-choice") {
+            const optionsHTML = q.options.map(option => {
+                const [text, correctness] = option.split("\t");
+                return `
+                    <label>
+                        <input type="radio" name="q${index}" data-correct="${correctness}" value="${text}"> ${text}
+                    </label><br>
+                `;
+            }).join("");
+
             questionDiv.innerHTML = `
                 <strong>Multiple Choice Question:</strong> ${q.question}
                 <div>${optionsHTML}</div>
+            `;
+        } else if (q.type === "essay") {
+            questionDiv.innerHTML = `
+                <strong>Essay Question:</strong> ${q.question}
+                <textarea></textarea>
             `;
         }
 
@@ -429,41 +413,36 @@ function generateQuestions() {
 
     // Reset Submit Button
     const submitButton = document.getElementById("submitButton");
-    submitButton.disabled = false;  // Unlock the button
-    submitButton.style.display = "block";  // Ensure visibility
+    submitButton.disabled = false;
+    submitButton.style.display = "block";
 }
+
 
 function submitAnswers() {
     const questionsDiv = document.getElementById("questions");
     const questionDivs = questionsDiv.querySelectorAll(".question");
 
     questionDivs.forEach(div => {
-        const isEssay = div.classList.contains("essay");
+        const options = div.querySelectorAll("input[type='radio']");
 
-        if (isEssay) {
-            const textarea = div.querySelector("textarea");
-            textarea.disabled = true;
-        } else {
-            const options = div.querySelectorAll("input[type='radio']");
-            const questionText = div.querySelector("strong").textContent.replace("Multiple Choice Question: ", "").trim();
-            const correctAnswer = questions.find(q => q.question === questionText)?.answer;
+        options.forEach(option => {
+            const label = option.parentElement;
+            label.classList.remove("correct", "incorrect");
 
-            options.forEach(option => {
-                const label = option.parentElement;
-                if (option.checked) {
-                    if (option.value === correctAnswer) {
-                        label.classList.add("correct");
-                    } else {
-                        label.classList.add("incorrect");
-                    }
-                }
-            });
-        }
+            if (option.dataset.correct === "True") {
+                label.classList.add("correct"); // Correct answer marked green
+            }
+
+            if (option.checked && option.dataset.correct !== "True") {
+                label.classList.add("incorrect"); // Incorrect answer checked by user
+            }
+        });
     });
 
     // Disable Submit button
     document.getElementById("submitButton").disabled = true;
 }
+
 
 </script>
 </body>
